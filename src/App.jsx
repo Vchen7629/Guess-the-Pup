@@ -1,6 +1,23 @@
 import { useEffect, useRef } from "react"
 import { useImmerReducer } from "use-immer"
 
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyB5mVCCabHMzGzzdXsSUPTLFQ9RIrHUsbY",
+  authDomain: "doggame-9902a.firebaseapp.com",
+  projectId: "doggame-9902a",
+  storageBucket: "doggame-9902a.appspot.com",
+  messagingSenderId: "676848148345",
+  appId: "1:676848148345:web:d7873a6eac0899749399a8",
+  measurementId: "G-Z5CCC42ZJD"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+
 function onlyUniqueBreeds (pics) {
   const uniqueBreeds = []
   const uniquePics = pics.filter(pic => {
