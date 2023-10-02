@@ -14,5 +14,6 @@ This project was developed following a youtube video, https://www.youtube.com/wa
 <H2>
 <strong> What i plan on changing, new features</strong>
 </H2>
-1) User sign-in feature
+1) User sign-in feature 
 2) deploying the app to the web
+3) Changing the homepage to display more
