@@ -82,7 +82,7 @@ const InitialState = {
   currentQuestion: null, 
   playing: false,
   fetchCount: 0
-}
+} //data set
 
 function HeartIcon(props) {
   return (
