@@ -14,6 +14,12 @@ This project was developed following a youtube video, https://www.youtube.com/wa
 <H2>
 <strong> What i plan on changing, new features</strong>
 </H2>
-1) User sign-in feature 
-2) deploying the app to the web
-3) Changing the homepage to display more
+1) User sign-in feature <br>
+2) deploying the app to the web <br>
+3) Changing the homepage to display more <br>
+
+<H2>
+<strong> website link to the dog game</strong>
+</H2>
+https://651b5a86f116580095aa524e--serene-cendol-39168d.netlify.app/
+
