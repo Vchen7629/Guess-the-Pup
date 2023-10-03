@@ -1,22 +1,7 @@
 import { useEffect, useRef } from "react"
 import { useImmerReducer } from "use-immer"
 
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyB5mVCCabHMzGzzdXsSUPTLFQ9RIrHUsbY",
-  authDomain: "doggame-9902a.firebaseapp.com",
-  projectId: "doggame-9902a",
-  storageBucket: "doggame-9902a.appspot.com",
-  messagingSenderId: "676848148345",
-  appId: "1:676848148345:web:d7873a6eac0899749399a8",
-  measurementId: "G-Z5CCC42ZJD"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+import React, { useLayoutEffect } from 'react'
 
 function onlyUniqueBreeds (pics) {
   const uniqueBreeds = []
@@ -165,12 +150,11 @@ function App() {
   } , [state.fetchCount])
 
   return (
-    <div>
-
+    <div className="bg-gradient-to-b from-red-200 to-blue-200 bg-cover min-h-screen"> 
       {state.currentQuestion && (
         <>
-          <p className="text-center">
-            <span className="text-zinc-400 mr-3">
+          <p className="text-center ">
+            <span className="text-zinc-400 mr-3 ">
               <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class={"inline-block " + (state.playing ? "animate-spin" : "")} viewBox="0 0 16 16">
                 <path d="M2 14.5a.5.5 0 0 0 .5.5h11a.5.5 0 1 0 0-1h-1v-1a4.5 4.5 0 0 0-2.557-4.06c-.29-.139-.443-.377-.443-.59v-.7c0-.213.154-.451.443-.59A4.5 4.5 0 0 0 12.5 3V2h1a.5.5 0 0 0 0-1h-11a.5.5 0 0 0 0 1h1v1a4.5 4.5 0 0 0 2.557 4.06c.29.139.443.377.443.59v.7c0 .213-.154.451-.443.59A4.5 4.5 0 0 0 3.5 13v1h-1a.5.5 0 0 0-.5.5zm2.5-.5v-1a3.5 3.5 0 0 1 1.989-3.158c.533-.256 1.011-.79 1.011-1.491v-.702s.18.101.5.101.5-.1.5-.1v.7c0 .701.478 1.236 1.011 1.492A3.5 3.5 0 0 1 11.5 13v1h-7z"/>
               </svg>
@@ -178,17 +162,17 @@ function App() {
             </span>
 
             {[...Array(3 - state.strikes)].map((item, index) => {
-              return <HeartIcon key = {index} className="inline text-red-600 mx-1"></HeartIcon>
+              return <HeartIcon key = {index} className="inline text-red-600 mx-1"></HeartIcon> //code for the lives
             })} 
 
             {[...Array(state.strikes)].map((item, index) => {
-              return <HeartIcon key = {index} className="inline text-red-200 mx-1"></HeartIcon>
-            })}
+              return <HeartIcon key = {index} className="inline text-red-200 mx-1"></HeartIcon> //code for the failed lives ui element
+            })} 
           </p>
 
-          <h1 class="text-center font-bold pt-3 pb-10 break-all text-4xl md:text-7xl">{state.currentQuestion.breed}</h1>
+          <h1 class="text-center font-bold pt-3 pb-10 break-all text-4xl md:text-7xl">{state.currentQuestion.breed}</h1> 
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 px-5">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 px-5 ">
             {state.currentQuestion.photos.map((photo, index) => {
               return <div onClick={() => dispatch({type: "guessAttempt", value: index})}key={index} className="rounded-lg h-40 lg:h-80 bg-cover bg-center" style = {{backgroundImage: `url(${photo})`}}> </div>
             })}
@@ -196,13 +180,15 @@ function App() {
 
         </>
       )}
-
+      
       {state.playing == false && Boolean(state.bigCollection.length) && !state.currentQuestion && (
         <p className="text-center fixed top-0 bottom-0 right-0 left-0 flex justify-center items-center">
+        <div className="fixed top-0 right-0 left-0 bottom-0 bg-gradient-to-b from-red-200 to-blue-200 flex justify-center items-center text-center">
           <button onClick={() => dispatch({type: "startPlaying"})}className="text-white bg-gradient-to-b from-indigo-500 to-green-200 px-4 py-3 rounded text-2xl font-bold">
             Play
           </button>
-      </p>
+          </div>
+        </p>
       )}
 
       {(state.timeRemaining <= 0 || state.strikes >= 3) && state.currentQuestion && (
@@ -210,8 +196,6 @@ function App() {
           <div>
           {state.strikes >=3 && <p className="text-6xl mb-4 font-bold">You ran out of lives!</p>}
           {state.timeRemaining <= 0 && <p className="text-6xl mb-4 font-bold">Time's up</p>}
-
-          <p>
             Your Score:{" "}
             <span className="text-amber-400">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" className="inline-block relative bottom-1 mx-1" viewBox="0 0 16 16">
@@ -219,12 +203,12 @@ function App() {
               </svg>
               {state.points}
             </span>
-          </p>
+
 
           <p className="mb-5">Your High Score: 0</p>
 
           <button onClick={() => dispatch({type: "startPlaying"})} className="text-white bg-gradient-to-b from-indigo-500 to-green-200 px-4 py-3 rounded text-lg font-bold">
-            Play Again
+            play again
           </button>
         </div>
         </div>
