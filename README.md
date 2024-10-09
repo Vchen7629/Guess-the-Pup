@@ -13,8 +13,8 @@ This project was developed following a youtube video, https://www.youtube.com/wa
 
 <H2>
 <strong>Deployment</strong>
-  Deployed using Netlify
 </H2>
+Deployed using Netlify
 
 <H2>
 <strong> What i plan on changing, new features</strong>
