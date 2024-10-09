@@ -12,10 +12,14 @@ This project was inspired by my love for dogs and a desire to learn more about a
 This project was developed following a youtube video, https://www.youtube.com/watch?v=nmbpZ-RJaLY&t=143s&ab_channel=LearnWebCode
 
 <H2>
+<strong>Deployment</strong>
+  Deployed using Netlify
+</H2>
+
+<H2>
 <strong> What i plan on changing, new features</strong>
 </H2>
 1) User sign-in feature <br>
-2) deploying the app to the web <br>
 3) Changing the homepage to display more <br>
 
 <H2>
