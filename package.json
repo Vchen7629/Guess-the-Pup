@@ -2,10 +2,12 @@
   "name": "doggame",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://Vchen7629.github.io/Guess-the-Pup",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "npm run build && gh-pages -d dist"
   },
   "dependencies": {
     "autoprefixer": "^10.4.7",
@@ -14,10 +16,7 @@
     "postcss": "^8.4.14",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
-<<<<<<< HEAD
-=======
     "react-router-dom": "^7.0.1",
->>>>>>> new-branch-name
     "tailwindcss": "^3.1.3",
     "use-immer": "^0.7.0"
   },
@@ -25,10 +24,7 @@
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
     "@vitejs/plugin-react": "^1.3.0",
+    "gh-pages": "^6.2.0",
     "vite": "^2.9.9"
   }
-<<<<<<< HEAD
-} 
-=======
 }
->>>>>>> new-branch-name
