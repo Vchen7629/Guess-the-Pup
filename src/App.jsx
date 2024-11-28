@@ -2,6 +2,8 @@ import { useEffect, useRef } from "react"
 import { useImmerReducer } from "use-immer"
 
 import React, { useLayoutEffect } from 'react'
+import dogIcon from "./images/dog-icon.png";
+import Header from "./header";
 
 function onlyUniqueBreeds (pics) {
   const uniqueBreeds = []
@@ -153,7 +155,8 @@ function App() {
     <div className="bg-gradient-to-b from-red-200 to-blue-200 bg-cover min-h-screen"> 
       {state.currentQuestion && (
         <>
-          <p className="text-center ">
+          <Header/>
+          <p className="text-center mt-8">
             <span className="text-zinc-400 mr-3 ">
               <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class={"inline-block " + (state.playing ? "animate-spin" : "")} viewBox="0 0 16 16">
                 <path d="M2 14.5a.5.5 0 0 0 .5.5h11a.5.5 0 1 0 0-1h-1v-1a4.5 4.5 0 0 0-2.557-4.06c-.29-.139-.443-.377-.443-.59v-.7c0-.213.154-.451.443-.59A4.5 4.5 0 0 0 12.5 3V2h1a.5.5 0 0 0 0-1h-11a.5.5 0 0 0 0 1h1v1a4.5 4.5 0 0 0 2.557 4.06c.29.139.443.377.443.59v.7c0 .213-.154.451-.443.59A4.5 4.5 0 0 0 3.5 13v1h-1a.5.5 0 0 0-.5.5zm2.5-.5v-1a3.5 3.5 0 0 1 1.989-3.158c.533-.256 1.011-.79 1.011-1.491v-.702s.18.101.5.101.5-.1.5-.1v.7c0 .701.478 1.236 1.011 1.492A3.5 3.5 0 0 1 11.5 13v1h-7z"/>
@@ -170,7 +173,11 @@ function App() {
             })} 
           </p>
 
-          <h1 class="text-center font-bold pt-3 pb-10 break-all text-4xl md:text-7xl">{state.currentQuestion.breed}</h1> 
+          <div class="flex items-center justify-center font-bold pt-3 pb-10 break-all">
+            <div className="w-fit h-fit p-4  rounded-3xl bg-cyan-400 text-blue-800 text-4xl md:text-7xl">
+            {state.currentQuestion.breed}
+            </div>
+          </div> 
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 px-5 ">
             {state.currentQuestion.photos.map((photo, index) => {
@@ -181,14 +188,22 @@ function App() {
         </>
       )}
       
-      {state.playing == false && Boolean(state.bigCollection.length) && !state.currentQuestion && (
-        <p className="text-center fixed top-0 bottom-0 right-0 left-0 flex justify-center items-center">
-        <div className="fixed top-0 right-0 left-0 bottom-0 bg-gradient-to-b from-red-200 to-blue-200 flex justify-center items-center text-center">
-          <button onClick={() => dispatch({type: "startPlaying"})}className="text-white bg-gradient-to-b from-indigo-500 to-green-200 px-4 py-3 rounded text-2xl font-bold">
-            Play
-          </button>
+      {state.playing == false && Boolean(state.bigCollection.length) && !state.currentQuestion && (          
+          <div className="flex flex-col fixed top-0 right-0 left-0 bottom-0 bg-gradient-to-b from-red-200 to-blue-200 flex  items-center text-center">
+              <Header/>
+              <banner className="w-full h-[40vh]">
+              <img src={dogIcon} alt="Dog Icon" className="w-full h-full object-contain bg-gradient-to-b from-red-200 to-blue-200" />
+                Lorem ipsum
+              </banner>
+              <div className="flex flex-col w-full h-[55vh] bg-indigo-400 py-12 items-center">
+                <div className="text-3xl text-white font-bold ">Welcome to Guess the pup!</div>
+                <div className="text-xl text-blue-700 my-8 max-w-1/4"> A fun little online game where you 
+                try to guess the correct dog breed from four choices!</div>
+                <button onClick={() => dispatch({type: "startPlaying"})}className="text-white h-fit w-fit bg-blue-500 px-4 py-3 rounded text-2xl font-bold hover:text-yellow-500">
+                  Play
+                </button>
+              </div>
           </div>
-        </p>
       )}
 
       {(state.timeRemaining <= 0 || state.strikes >= 3) && state.currentQuestion && (
