@@ -6,8 +6,5 @@ Dog guessing game using a dog api developed using React/Tailwind
 </H2>
 This project was inspired by my love for dogs and a desire to learn more about api integration and javascript.
 
-<H2>
-<strong> website link to the dog game</strong>
-</H2>
-https://651b5a86f116580095aa524e--serene-cendol-39168d.netlify.app/
+vchen7629.github.io/Guess-the-Pup/
 
